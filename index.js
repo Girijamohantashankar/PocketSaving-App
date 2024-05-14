@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // Remove duplicate import
 const User = require("./models/User");
 const UserMoneyAdd = require("./models/Moneyadd.js");
