@@ -4,7 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken"); // Remove duplicate import
+// bcryptjs added
+const jwt = require("jsonwebtoken"); 
 const User = require("./models/User");
 const UserMoneyAdd = require("./models/Moneyadd.js");
 const Products = require("./models/Products");
