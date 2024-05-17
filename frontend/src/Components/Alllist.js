@@ -117,8 +117,8 @@ function Alllist() {
       <div className="main_list">
         <div className="transaction_details_lists" id="pdf-content">
           <table>
-            <thead>
-              <tr>
+            <thead className="th_head">
+              <tr >
                 <th>Products</th>
                 <th>Date and Time</th>
                 <th>Amount</th>

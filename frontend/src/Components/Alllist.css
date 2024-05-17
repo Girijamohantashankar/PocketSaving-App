@@ -50,7 +50,14 @@ overflow: hidden;
 }
 .transaction_details_lists{
   margin-top: 20px;
+  height: 480px;
 }
+thead{
+  position: sticky;
+  top: -3px;
+  left: 0;
+}
+
 .main_list .item_list_title p{
     font-size: 15px;
     font-weight: 700;
