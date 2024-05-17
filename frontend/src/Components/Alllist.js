@@ -124,7 +124,7 @@ function Alllist() {
                 <th>Amount</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="fix_table_header">
               {loading && (
                 <tr>
                   <td colSpan="3">Loading...</td>

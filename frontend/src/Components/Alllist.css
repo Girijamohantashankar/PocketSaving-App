@@ -94,6 +94,8 @@ overflow: hidden;
 .transaction_details_lists table {
   width: 100%;
   border-collapse: collapse;
+  height: 100%;
+  overflow: auto;
 }
 
 .transaction_details_lists th,
@@ -119,4 +121,26 @@ overflow: hidden;
 .error_messag{
   color: red;
   font-size: 20px;
+}
+.transaction_details_lists{
+  margin-bottom: 20px;
+}
+.fix_table_header{
+overflow: scroll;
+}
+/* Custom scrollbar track */
+.fix_table_header::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Custom scrollbar thumb */
+.fix_table_header::-webkit-scrollbar-thumb {
+  background-color: #10bfa2;
+  border-radius: 5px;
+}
+
+/* Hide the scrollbar on macOS */
+.fix_table_header::-webkit-scrollbar {
+  width: 6px;
+  background-color: #0db874;
 }
