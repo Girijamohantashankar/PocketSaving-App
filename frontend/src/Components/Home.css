@@ -124,7 +124,7 @@
   padding-left: 20px;
 }.products_details_list ul{
   padding-left: 0px;
-  height: 180px;
+  height: 300px;
   overflow-y: scroll;
 }
 .products_details_list ul li{
