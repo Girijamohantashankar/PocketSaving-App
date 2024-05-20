@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 
 function Signup() {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "", 
     email: "",
@@ -19,6 +20,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post("/signup", {
         username: formData.username,
@@ -47,6 +49,9 @@ function Signup() {
         console.error("Signup failed:", error);
         toast.error("Signup failed. Please try again.");
       }
+      
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -103,7 +108,9 @@ function Signup() {
               />
             </div>
             <div className="input_form">
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={loading}>
+              {loading ? 'Loading...' : 'Submit'}
+              </button>
             </div>
           </form>
           <div className="login_content">

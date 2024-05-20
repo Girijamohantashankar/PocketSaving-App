@@ -95,7 +95,7 @@ app.post("/addMoney", async (req, res) => {
     res.status(200).json({ accountBalance: userAccount.accountBalance });
   } catch (error) {
     res.status(500).json({ error: error.message });
-    console.log(error);
+    // console.log(error);
   }
 });
 // Account Balance Api
@@ -111,7 +111,7 @@ app.get("/getAccountBalance", async (req, res) => {
     res.status(200).json({ accountBalance: userAccount.accountBalance });
   } catch (error) {
     res.status(500).json({ errror: "Internal Server Error" });
-    console.log(error);
+    // console.log(error);
   }
 });
 
@@ -138,7 +138,7 @@ app.post("/addProduct", async (req, res) => {
     res.status(200).json({ newProduct, balancemoney });
   } catch (error) {
     res.status(500).json({ error: error.message });
-    console.error("Error adding product:", error);
+    // console.error("Error adding product:", error);
   }
 });
 
@@ -160,7 +160,7 @@ app.post("/getProducts", async (req, res) => {
     res.status(200).json({ products, totalAmount });
   } catch (error) {
     res.status(500).json({ error: error.message });
-    console.error("Error fetching products:", error);
+    // console.error("Error fetching products:", error);
   }
 });
 
@@ -217,7 +217,7 @@ app.post("/filterProducts", async (req, res) => {
     res.status(200).json({ products, totalAmount });
   } catch (error) {
     res.status(500).json({ error: error.message });
-    console.error("Error filtering products:", error);
+    // console.error("Error filtering products:", error);
   }
 });
 
@@ -228,7 +228,7 @@ app.use(express.static(path.join(__dirname, "./frontend/build")));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./frontend/build/index.html"), (err) => {
         if (err) {
-            console.error('Error sending index.html:', err);
+            // console.error('Error sending index.html:', err);
             res.status(500).send(err);
         }
     });

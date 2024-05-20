@@ -6,7 +6,7 @@ import "./Home.css";
 
 function Home() {
   const [accountBalance, setAccountBalance] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const [inputAmount, setInputAmount] = useState("");
   const [productName, setProductName] = useState("");
   const [productAmount, setProductAmount] = useState("");
@@ -86,6 +86,7 @@ function Home() {
   };
 
   const handleAddProduct = async () => {
+    setLoading(true);
     try {
       const response = await axios.post("/addProduct", {
         email: localStorage.getItem("rememberedEmail"),
@@ -106,6 +107,9 @@ function Home() {
       console.error("Error adding product:", error);
       // toast.error("Error adding product:", error);
       toast.error("Error high price:");
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -196,7 +200,9 @@ function Home() {
               onChange={handleProductChange}
             />
           </div>
-          <button onClick={handleAddProduct}>Submit</button>
+          <button onClick={handleAddProduct} disabled={loading}>
+          {loading ? 'Loading...' : 'Submit'}
+            </button>
         </div>
 
         <div className="transaction_details">

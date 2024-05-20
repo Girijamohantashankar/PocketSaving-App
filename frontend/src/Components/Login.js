@@ -10,6 +10,7 @@ function Login() {
     password: '',
     rememberMe: false
   });
+  const [loading, setLoading] = useState(false);
 
   // Load email and password from local storage if Remember Me is checked
   useEffect(() => {
@@ -34,9 +35,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post('/login', formData);
-  
+
       if (response.status === 200 && response.data.token) {
         localStorage.setItem('token', response.data.token);
         toast.success('Login successful!');
@@ -65,9 +67,11 @@ function Login() {
       } else {
         toast.error('Login failed. Please try again.');
       }
+    } finally {
+      setLoading(false);
     }
   };
-  
+
   return (
     <div className="Signup_main">
       <div className="login_container">
@@ -76,18 +80,40 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <div className="input_form">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter Your Email" value={formData.email} onChange={handleChange} />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter Your Email"
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
             <div className="input_form">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" name="password" placeholder="Enter Your Password" value={formData.password} onChange={handleChange} />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter Your Password"
+                value={formData.password}
+                onChange={handleChange}
+              />
             </div>
             <div className="input_form2">
-              <input type='checkbox' id='check' name='rememberMe' checked={formData.rememberMe} onChange={handleChange} />
+              <input
+                type="checkbox"
+                id="check"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleChange}
+              />
               <label htmlFor="check">Remember Me</label>
             </div>
             <div className="input_form">
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={loading}>
+                {loading ? 'Loading...' : 'Submit'}
+              </button>
             </div>
           </form>
           <div className="login_content">
@@ -97,7 +123,7 @@ function Login() {
       </div>
       <ToastContainer />
     </div>
-  )
+  );
 }
 
 export default Login;
